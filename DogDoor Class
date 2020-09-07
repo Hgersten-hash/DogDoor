@@ -1,0 +1,57 @@
+import java.lang.Thread;
+
+public class DogDoor extends IsWorking { //DogDoor 
+	private boolean open;
+	private boolean unlocked;
+	private Bark ownerbark;
+	private Combination ownercombination;
+	
+	public Bark getOwnerbark() {
+		return ownerbark;	//accesses ownerbark
+	}
+	public void setOwnerbark(Bark ownerbark) {
+		this.ownerbark = ownerbark; //sets inputted bark as ownerbark
+	}
+	public DogDoor() {
+		this.open = false;
+	}
+	public void open() {
+		open =true;
+		System.out.println("The dogdoor is open");
+	}
+	public void autoopen() throws InterruptedException//built in error handling 
+	{ 
+		open = true;
+		System.out.println("The door is closing in 5 seconds"); //to not let in other animals
+		Thread.sleep(5); //puts program to sleep for 5 seconds
+		this.closed(); 
+	}
+	public void closed() { //closes dogdoor
+		open = false;
+		System.out.println("The dogdoor is closed");
+	}
+	
+	public boolean isOpen(){ 
+		return open;
+	}
+	public Combination getOwnercombination() {
+		return ownercombination;
+	}
+	public void setOwnercombination(Combination ownercombination) {
+		this.ownercombination = ownercombination;
+	}
+	public void unlock() {
+		System.out.println("The windows are locked");
+		unlocked = true;
+	}
+	public void lock() {
+		System.out.println("The windows are unlocked");
+		unlocked = false;
+	}
+	public boolean isUnlocked() {
+		return unlocked;
+	}
+	public void workingStatus() {
+		System.out.println("The door system is working");
+	}
+}
