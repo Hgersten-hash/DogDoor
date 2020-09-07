@@ -1,0 +1,60 @@
+import java.util.Scanner;
+import java.util.*;
+
+public class Remote {
+	private DogDoor door;
+	
+	public Remote() {
+		this.door =null;
+	}
+	public Remote(DogDoor door) {
+		this.door = door;
+	}
+	public void pressbutton() throws InterruptedException {
+		if(door.isOpen()) {
+			System.out.println("Now closing the door");
+			door.closed();
+		}else {
+			System.out.println("Now opening the door");
+			door.open();
+		}
+	}
+	public void chooseoption(int n) throws InterruptedException {
+		Scanner k = new Scanner(System.in); //to manually put in animal sounds
+		DogDoor door = new DogDoor(); //create DogDoor object
+		Remote remote = new Remote(door); // create Remote object
+		BarkRecognizer Recognizer = new BarkRecognizer(door);//create BarkRecognizer object
+		WindowLock Locker = new WindowLock(door);
+		IsWorking working = new IsWorking();
+		Window window = new Window();
+
+		if(n==1) {
+			remote.pressbutton();
+		}
+		if(n==2) {
+			Bark mydogbark = new Bark("Woof"); //create Bark object
+			door.setOwnerbark(mydogbark); //set this bark as the ownerbark
+			ArrayList<Bark> allbarks = new ArrayList<>(); //set up an Arraylist 
+			for(int i =0; i<10; i++)					  //that contains all animal
+			{											  // sounds the dog door hears
+				System.out.println("Enter a bark");
+				Bark bark = new Bark(k.next());	
+				allbarks.add(bark);
+			}
+			Recognizer.recognizemyDog(allbarks); //use recognize method 	
+											//on the arraylist of allbarks
+		}
+		if(n==3) {
+			Combination mycombination = new Combination("12345");
+			door.setOwnercombination(mycombination);
+			System.out.println("Please enter lock combination:");
+			Combination entry = new Combination(k.next());
+			Locker.locker(entry);
+		}
+		if(n==4) {
+		working.workingStatus();
+		door.workingStatus();
+		window.workingStatus();
+		}
+	}
+}
