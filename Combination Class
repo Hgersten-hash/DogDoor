@@ -1,0 +1,21 @@
+public class Combination { //creates combination object
+	private String combination;
+	
+	public Combination(String combination) {
+		this.combination =combination;
+	}
+	public String getthecombination() {
+		return combination;
+	}
+	public boolean equals(Combination combination) {
+		boolean ismycomb = false;
+		if(combination instanceof Combination) {
+			Combination newcomb = combination;
+			if(this.combination.equalsIgnoreCase(newcomb.combination))
+			{
+				ismycomb=true;
+			}
+		}
+		return ismycomb;
+	}
+}
