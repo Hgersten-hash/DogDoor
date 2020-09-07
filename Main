@@ -1,0 +1,11 @@
+
+	Scanner k = new Scanner(System.in); //to manually put in animal sound
+  System.out.println("Choose which option you would like:");//so that user
+	System.out.println("1. Remote control");// can choose which system		
+	System.out.println("2. BarkRecognizer");//they need
+  System.out.println("3. WindowLock");
+	System.out.println("4. Check if all systems are Working");
+	int n =k.nextInt();
+	
+	Remote remote = new Remote();//create remote object
+	remote.chooseoption(n); 
