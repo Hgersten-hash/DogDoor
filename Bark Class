@@ -1,0 +1,21 @@
+public class Bark { //creates Bark object
+	private String myDog;
+	
+	public Bark(String myDog) {
+		this.myDog = myDog;
+	}
+	public String getmyDog() {
+		return myDog;
+	}
+	public boolean equals(Bark bark){
+		boolean ismyDog = false;
+		if(bark instanceof Bark)
+		{
+			Bark otherBark = bark;
+			if(this.myDog.equalsIgnoreCase(otherBark.myDog)) {
+				ismyDog =true;
+			}
+		} 
+		return(ismyDog);
+	}
+}
