@@ -1,0 +1,33 @@
+import java.util.*;
+import java.util.function.Consumer;
+
+public class BarkRecognizer {
+	private DogDoor door;
+	
+	public BarkRecognizer(DogDoor door) {
+		this.door = door;
+	}
+	
+	public void recognizemyDog(ArrayList<Bark> allbarks) throws InterruptedException {
+		Bark ownerbark = door.getOwnerbark(); //gets owners bark
+		Consumer<Bark> action = x ->
+		{
+			System.out.println("Not right bark.");
+		};
+		Iterator<Bark> iter = allbarks.iterator();
+		
+		while(iter.hasNext())
+		{
+			Bark bark = iter.next();
+			System.out.println("Not right bark");
+			if(bark.equals(ownerbark))
+			{
+				System.out.println("Right bark. The door is open");
+				door.autoopen();
+				
+				iter.forEachRemaining(action);
+			}
+		}
+		
+	}
+}
