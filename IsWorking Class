@@ -1,0 +1,6 @@
+public class IsWorking {
+	
+	public void workingStatus() {
+		System.out.println("The system is working");
+	}
+}
