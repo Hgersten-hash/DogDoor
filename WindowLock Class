@@ -1,0 +1,21 @@
+public class WindowLock {
+	private DogDoor door;
+	
+	public WindowLock(DogDoor door) {
+		this.door =door;
+	}
+	public void locker(Combination entry) {
+		Combination ownercombination = door.getOwnercombination();
+		if(entry.equals(ownercombination)) {
+			if(door.isUnlocked())
+			{
+				door.unlock();
+			}else {
+				door.lock();
+			}
+		}else {
+			System.out.println("Please try again:");
+		}
+	}
+	
+}
